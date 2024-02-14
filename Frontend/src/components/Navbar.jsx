@@ -10,7 +10,7 @@ const Navbar = () => {
             <nav className="navbar navbar-expand-lg shadow-sm ">
               <div className="container-fluid">
                 <Link className="navbar-brand" to={"/"}>
-                  <img src="./Images/logo.png" alt="logo" width={"50px"} />
+                  <img src="./Images/logo.png" alt="logo" width={"70px"} />
                 </Link>
                 <button
                   className="navbar-toggler"
@@ -27,7 +27,7 @@ const Navbar = () => {
                   className="collapse navbar-collapse"
                   id="navbarSupportedContent"
                 >
-                  <ul className="navbar-nav ms-auto mb-2 mb-lg-0  ">
+                  <ul className="navbar-nav ms-md-auto mb-2 mb-lg-0">
                     <li className="nav-item mx-4">
                       <NavLink
                         className="nav-link "
@@ -48,10 +48,14 @@ const Navbar = () => {
                       </NavLink>
                     </li>
                     <li className="nav-item mx-2">
-                      <button className="btn  btnSignup ">Signup</button>
+                      <NavLink className="nav-link " to={"/signup"}>
+                        Signup
+                      </NavLink>
                     </li>
-                    <li className="nav-item mx-2">
-                      <button className="btn  btnLogin ">Login</button>
+                    <li className="nav-item mx-2 btnLogin">
+                      <NavLink className="nav-link" to={"/login"}>
+                        Login
+                      </NavLink>
                     </li>
                   </ul>
                 </div>

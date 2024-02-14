@@ -15,36 +15,33 @@
 }
 
 .btnLogin {
+  color: #fff;
+  border-radius: 10px;
   background-color: var(--primary-color);
-  color: white;
-  border: none;
-  padding: 6px 12px;
+  padding: 4px 8px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  font-weight: bolder;
+  border: none;
   cursor: pointer;
 }
+
+.btnLogin a {
+  color: white;
+}
+
+.btnLogin a:hover {
+  color: var(--primary-color);
+}
+
 .btnLogin:hover {
   background-color: #fff;
-  color: var(--primary-color);
   border: 2px solid var(--primary-color);
 }
 
-.btnSignup {
-  background-color: #fff;
-  color: var(--primary-color);
-  padding: 6px 12px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
 .btnSignup:hover {
   background-color: var(--primary-color);
   color: #fff;
-  border: 2px solid var(--primary-color);
 }

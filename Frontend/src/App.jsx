@@ -7,6 +7,8 @@ import Features from "./Pages/Features";
 import HowItWorks from "./Pages/HowItWorks";
 import Error from "./Pages/Error";
 import "./App.css";
+import Signup from "./Pages/Signup";
+import Login from "./Pages/Login";
 
 const App = () => {
   return (
@@ -16,6 +18,8 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/features" element={<Features />} />
         <Route path="/info" element={<HowItWorks />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </>
