@@ -10,7 +10,7 @@ const Navbar = () => {
             <nav className="navbar navbar-expand-lg shadow-sm ">
               <div className="container-fluid">
                 <Link className="navbar-brand" to={"/"}>
-                  <img src="./Images/logo.png" alt="logo" width={"70px"} />
+                  <img src="./Images/Logo.svg" alt="logo" width={"70px"} />
                 </Link>
                 <button
                   className="navbar-toggler"
