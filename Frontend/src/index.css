@@ -9,7 +9,13 @@ body {
   font-family: "Poppins", sans-serif;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
+
+.wrapper {
+  flex: 1;
+}
+
 .active {
   border-bottom: solid 2px #ff7549;
   font-weight: bold;
@@ -19,66 +25,17 @@ body {
 :root {
   --primary-color: #ff7549;
 }
-a {
-  text-decoration: none;
-  color: #fff;
-}
 
-.btnLogin {
-  color: #fff;
+/* navbar css */
+.nav-item:hover {
+  background-color: whitesmoke;
   border-radius: 10px;
-  background-color: var(--primary-color);
-  padding: 4px 8px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  font-weight: bolder;
-  border: none;
-  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
-.btnLogin a {
-  color: white;
-}
+/* utility css */
 
-.btnLogin a:hover {
-  color: var(--primary-color);
-}
-
-.btnLogin:hover {
-  background-color: #fff;
-  border: 2px solid var(--primary-color);
-}
-
-/* hero css */
-.container {
-  display: flex;
-  flex-direction: row;
-  margin: 2rem 0 4rem 0;
-  padding: 1rem;
-  width: 100%;
-}
-.left-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1rem;
-}
-.left-box h1 {
-  font-size: 3rem;
-  font-weight: 600;
-}
-
-.right-box img {
-  width: 35rem;
-  height: 35rem;
-  overflow: hidden;
-  padding-bottom: 4rem;
-  text-align: center;
-}
-
-.btnHero {
+.Btn {
   color: #fff;
   border-radius: 10px;
   background-color: var(--primary-color);
@@ -90,21 +47,71 @@ a {
   font-weight: bolder;
   border: none;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
-.btnHero:hover {
+.Btn:hover {
   background-color: #fff;
-  border: 2px solid var(--primary-color);
   color: var(--primary-color);
+  box-shadow: 0px 0px 0px 2px var(--primary-color) inset;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  margin: 2rem 0 4rem 0;
+  padding: 1rem;
+  width: 100%;
+}
+
+/* hero css */
+
+.left-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+.left-box h1 {
+  font-size: 3rem;
+  font-weight: 600;
+}
+.left-box p {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #6c757d;
+}
+
+.right-box img {
+  width: 35rem;
+  height: 35rem;
+  overflow: hidden;
+  padding-bottom: 4rem;
+  text-align: center;
 }
 
 /* footer css */
 .footer {
   margin-top: auto;
-  background-color: #f8f9fa;
-  padding: 50px 0;
-  color: #000;
+  background-color: #343a40;
+  padding: 40px 0;
+  color: #ffffff;
   text-align: center;
   font-size: 18px;
   font-weight: 500;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid #ffffff;
+}
+
+.footer p {
+  padding: 8px 0;
+  margin: 0;
+}
+
+.footer a {
+  color: #61dafb;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.footer a:hover {
+  text-decoration: underline;
 }
