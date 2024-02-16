@@ -6,11 +6,11 @@ const Navbar = () => {
     <>
       <div className="container-fluid">
         <div className="row">
-          <div className="col-md-10 col-12 mx-auto">
-            <nav className="navbar navbar-expand-lg shadow-sm ">
+          <div className="col-md-12 col-12 mx-auto">
+            <nav className="navbar navbar-expand-lg  border-3 border-bottom rounded-3">
               <div className="container-fluid">
                 <Link className="navbar-brand" to={"/"}>
-                  <img src="./Images/Logo.svg" alt="logo" width={"70px"} />
+                  <img src="./Images/logo2.png" alt="logo" width={"70px"} />
                 </Link>
                 <button
                   className="navbar-toggler"
@@ -52,10 +52,10 @@ const Navbar = () => {
                         Signup
                       </NavLink>
                     </li>
-                    <li className="nav-item mx-2 btnLogin">
-                      <NavLink className="nav-link" to={"/login"}>
+                    <li className="nav-item mx-2 ">
+                      <Link className="nav-link Btn" to={"/login"}>
                         Login
-                      </NavLink>
+                      </Link>
                     </li>
                   </ul>
                 </div>
