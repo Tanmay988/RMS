@@ -29,29 +29,6 @@ const Home = () => {
                 <img src="./Images/hero1.avif" alt="hero img" />
               </div>
             </div>
-
-            <div className="container">
-              <div className="right-box">
-                <img src="./Images/hero1.avif" alt="hero img" />
-              </div>
-              <div className="left-box">
-                <h1>
-                  Now take food orders with interactive
-                  <span style={{ color: "#ff7549" }}> QR codes</span>
-                </h1>
-                <p>
-                  No more reprinting menus, order errors, and delayed responses
-                  from the kitchen simply integrate RMS’ QR menu with your
-                  restaurant and start delivering a seamless customer
-                  experience.
-                </p>
-                <div className="button">
-                  <Link to={"/login"} className=" Btn">
-                    Try for free
-                  </Link>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
