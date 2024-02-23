@@ -6,8 +6,6 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const connectWithDB = require('./config/db');
 
-
- 
 // const indexWebroutes = require('./routes/web/index')
 const userAuthroutes = require("./routes/authRoutes")
 // const paymentWebRoutes = require('./routes/web/paymentRoutes');

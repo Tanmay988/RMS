@@ -57,40 +57,27 @@ exports.register = async (req, res) => {
 
 // Login Restaurant
 exports.login = async (req, res) => {
-  const username = req.body.username;
-  const password = req.body.password;
-
+  try{
+  const {email,password} = req.body;
   // Check if restaurant is present in the database
-  const user = await Usermodel.findOne({ username }).lean();
-
+  const user = await Usermodel.findOne({ email });
+  
   if (!user) {
     return res.json({ status: "error", error: "User not found" });
   }
   
-  // Coverts the document from monogoDB document to plain javascript object to increase performance and reduce memory usage
-  
-
   // Compare the password against the password provided in  the request
   if (await bcrypt.compare(password, user.password)) {
     // Create jwt token with userId and username
-    const token = jwt.sign(
-      {
-        id: user._id,
-        username: user.username,
-      },
-      JWT_SECRET,
-      { expiresIn: "2h" }
-    );
-     console.log(token);
-    // Store the token in the local storage for later use
-    localStorage.set("jwt", token);
-
-    // Render restaurant view
-    res.redirect("/restaurant/restaurantHomePage");
+    await getjwtToken(user._id,res);
+    
+    res.status(200).json({ message: "User Login Successful!" , userId : user._id , restaurantName : user.restaurantName , email : user.email , phoneNo : user.phoneNo});
   } else {
     res.json({ status: "error", error: "Invalid Password" });
   }
-};
+} catch (error) {
+  return res.status(400).json({ userMessage:"User Login Failed!", message: error.message });
+}};
 
 
 exports.logout = async(req,res) => {
