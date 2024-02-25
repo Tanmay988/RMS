@@ -66,7 +66,7 @@ const Signup = () => {
                 fullWidth
                 id="restaurant"
                 label="Restaurant Name"
-                name="text"
+                name="restaurantName"
                 autoComplete="text"
                 autoFocus
               />
@@ -76,7 +76,7 @@ const Signup = () => {
                 fullWidth
                 id="phoneNo"
                 label="Mobile Number"
-                name="number"
+                name="phoneNo"
                 autoComplete="number"
               />
               <TextField
@@ -105,7 +105,7 @@ const Signup = () => {
                 name="confirmPassword"
                 label="Confirm Password"
                 type="password"
-                id="password"
+                id="confirmPassword"
                 autoComplete="current-password"
               />
               <Button
