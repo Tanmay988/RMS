@@ -8,17 +8,37 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Link } from "react-router-dom";
+import useSignup from "../Hooks/useSignup";
 
 const defaultTheme = createTheme();
 
 const Signup = () => {
-  const handleSubmit = (event) => {
+  const { signup, loading } = useSignup();
+
+  const [user, setUser] = React.useState({
+    restaurantName: "",
+    email: "",
+    phoneNo: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const changeHandeler = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
+    await signup(user);
+    setUser({
+      restaurantName: "",
+      email: "",
+      phoneNo: "",
+      password: "",
+      confirmPassword: "",
     });
+
+    console.log(user);
   };
 
   return (
@@ -68,6 +88,7 @@ const Signup = () => {
                 label="Restaurant Name"
                 name="restaurantName"
                 autoComplete="text"
+                onChange={changeHandeler}
                 autoFocus
               />
               <TextField
@@ -78,6 +99,7 @@ const Signup = () => {
                 label="Mobile Number"
                 name="phoneNo"
                 autoComplete="number"
+                onChange={changeHandeler}
               />
               <TextField
                 margin="normal"
@@ -87,6 +109,7 @@ const Signup = () => {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={changeHandeler}
               />
               <TextField
                 margin="normal"
@@ -96,6 +119,7 @@ const Signup = () => {
                 label="Password"
                 type="password"
                 id="password"
+                onChange={changeHandeler}
                 autoComplete="current-password"
               />
               <TextField
@@ -106,8 +130,10 @@ const Signup = () => {
                 label="Confirm Password"
                 type="password"
                 id="confirmPassword"
+                onChange={changeHandeler}
                 autoComplete="current-password"
               />
+
               <Button
                 type="submit"
                 fullWidth
@@ -115,7 +141,16 @@ const Signup = () => {
                 style={{ backgroundColor: "#ff7549" }}
                 sx={{ mt: 3, mb: 2 }}
               >
-                Sign up
+                {loading ? (
+                  <div className="lds-ring">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                ) : (
+                  " Sign up"
+                )}
               </Button>
               <Grid container>
                 <Grid item>

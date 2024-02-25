@@ -1,14 +1,18 @@
 // Imports
-const express = require('express');
-const authorizationController = require('../controllers/restaurant-controllers/authorizationController/authController');
+const express = require("express");
+const {
+  register,
+  login,
+  logout,
+} = require("../controllers/restaurant-controllers/authorizationController/authController");
 const router = express.Router();
 
 // Routes
 
-router.post('/register' ,authorizationController.register)
+router.post("/register", register);
 
-router.post('/login' ,authorizationController.login);
+router.post("/login", login);
 
-router.post('/logout' ,authorizationController.logout);
+router.post("/logout", logout);
 
 module.exports = router;
