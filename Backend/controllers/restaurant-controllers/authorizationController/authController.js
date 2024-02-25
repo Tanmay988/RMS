@@ -1,86 +1,103 @@
 // Imports
-const express = require("express");
 const bcrypt = require("bcryptjs");
-const localStorage = require("local-storage");
-const JWT_SECRET = process.env.JWT_SECRET;
 const Usermodel = require("../../../models/userModel");
 const getjwtToken = require("../../../utility/get-jwt");
 
-
 // Register restaurant
 exports.register = async (req, res) => {
-
-  const {restaurantName,email,phoneNo,password,confirmPassword} = req.body;
+  const { restaurantName, email, phoneNo, password, confirmPassword } =
+    req.body;
 
   try {
+    if (password !== confirmPassword) {
+      return res.status(400).json({ message: "Passwords do not match" });
+    }
 
-  if(password !== confirmPassword){
-    return res.status(400).json({ message: "Passwords do not match"});
-  }
+    const user = await Usermodel.findOne({ restaurantName });
 
-  const user  = await Usermodel.findOne({restaurantName});
+    const findEmail = await Usermodel.findOne({ email });
 
-  const findEmail  = await Usermodel.findOne({email});
+    const findPhone = await Usermodel.findOne({ phoneNo });
 
-  const findPhone  = await Usermodel.findOne({phoneNo});
+    if (user) {
+      return res.status(400).json({ message: "Restaurant already exists" });
+    }
+    if (findEmail) {
+      return res.status(400).json({ message: "Email already exists" });
+    }
+    if (findPhone) {
+      return res.status(400).json({ message: "Phone number already exists" });
+    }
 
-  if(user){
-    return res.status(400).json({ message: "Restaurant already exists"});
-  }
-  if(findEmail){
-    return res.status(400).json({ message: "Email already exists"});
-  }
-  if(findPhone){
-    return res.status(400).json({ message: "Phone number already exists"});
-  }
+    // Convert the password to a hash value by providing the string password and salt number.
+    // console.log("restaurantName", restaurantName);
+    // console.log("email", email);
+    // console.log("phoneNo", phoneNo);
+    // console.log("password", password);
+    const hashPassword = await bcrypt.hash(password, 10);
+    // console.log("hashPassword", hashPassword);
 
-  // Convert the password to a hash value by provideing string password and salt number.
-  const hashPassword = await bcrypt.hash(password, 10);
-
-  
     // Create a new restaurant
-    const response = await Usermodel.create({
-        restaurantName,
-        email,
-        phoneNo,
-        password : hashPassword
+    const response = new Usermodel({
+      restaurantName,
+      email,
+      phoneNo,
+      password: hashPassword,
     });
-    if(response){
-        //create jwt token with userId and username
-        await getjwtToken(response._id,res);
-        res.status(200).json({ message: "Restaurant created successfully"});
+
+    if (response) {
+      // create jwt token with userId and username
+      await getjwtToken(response._id, res);
+      await response.save();
+      return res
+        .status(200)
+        .json({ message: "Restaurant created successfully" });
     }
   } catch (error) {
-      return res.status(400).json({ userMessage:"User Failed!", message: error.message });
+    return res
+      .status(400)
+      .json({ userMessage: "User Failed!", message: error.message });
   }
 };
 
 // Login Restaurant
 exports.login = async (req, res) => {
-  try{
-  const {email,password} = req.body;
-  // Check if restaurant is present in the database
-  const user = await Usermodel.findOne({ email });
-  
-  if (!user) {
-    return res.json({ status: "error", error: "User not found" });
-  }
-  
-  // Compare the password against the password provided in  the request
-  if (await bcrypt.compare(password, user.password)) {
-    // Create jwt token with userId and username
-    await getjwtToken(user._id,res);
-    
-    res.status(200).json({ message: "User Login Successful!" , userId : user._id , restaurantName : user.restaurantName , email : user.email , phoneNo : user.phoneNo});
-  } else {
-    res.json({ status: "error", error: "Invalid Password" });
-  }
-} catch (error) {
-  return res.status(400).json({ userMessage:"User Login Failed!", message: error.message });
-}};
+  try {
+    const { email, password } = req.body;
+    // Check if restaurant is present in the database
+    const user = await Usermodel.findOne({ email });
 
+    if (!user) {
+      return res.json({ status: "error", error: "User not found" });
+    }
 
-exports.logout = async(req,res) => {
-  localStorage.remove("jwt");
-  res.redirect("/restaurant/login");
-}
+    // Compare the password against the password provided in  the request
+    if (await bcrypt.compare(password, user.password)) {
+      // Create jwt token with userId and username
+      await getjwtToken(user._id, res);
+
+      res.status(200).json({
+        message: "User Login Successful!",
+        userId: user._id,
+        restaurantName: user.restaurantName,
+        email: user.email,
+        phoneNo: user.phoneNo,
+      });
+    } else {
+      res.status(400).json({ error: "Invalid Password" });
+    }
+  } catch (error) {
+    return res
+      .status(400)
+      .json({ userMessage: "User Login Failed!", message: error.message });
+  }
+};
+
+exports.logout = async (req, res) => {
+  try {
+    res.cookie("Token", "", { maxAge: 0 });
+    res.status(200).json({ message: "User Logout Successful!" });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
