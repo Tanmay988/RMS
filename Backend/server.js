@@ -18,7 +18,6 @@ const app = express();
 // Set port
 const port = process.env.PORT || "3000";
 
-
 // Configure bodyParser
 app.use(bodyParser.json());
 app.use(express.json());
