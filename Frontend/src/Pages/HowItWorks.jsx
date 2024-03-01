@@ -7,7 +7,7 @@ const HowItWorks = () => {
       <div className="container-fluid wrapper">
         <div className="row">
           <div className="col-md-10 col-12 mx-auto">
-            <div className="container wrapper">
+            <div className="container wrapper media">
               <div className="right-box">
                 <img
                   src="./Images/howItsWork.svg"
