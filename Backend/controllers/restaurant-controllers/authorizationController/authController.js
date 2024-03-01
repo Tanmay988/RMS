@@ -68,28 +68,27 @@ exports.login = async (req, res) => {
     const user = await Usermodel.findOne({ email });
 
     if (!user) {
-      return res.json({ status: "error", error: "User not found" });
+      return res.status(400).json({ error: "User not found" });
     }
 
     // Compare the password against the password provided in  the request
-    if (await bcrypt.compare(password, user.password)) {
-      // Create jwt token with userId and username
-      await getjwtToken(user._id, res);
+    const validatePassword = await bcrypt.compare(password, user.password);
 
-      res.status(200).json({
-        message: "User Login Successful!",
-        userId: user._id,
-        restaurantName: user.restaurantName,
-        email: user.email,
-        phoneNo: user.phoneNo,
-      });
-    } else {
-      res.status(400).json({ error: "Invalid Password" });
+    if (!validatePassword) {
+      return res.status(400).json({ error: "Invalid Password" });
     }
+
+    await getjwtToken(user._id, res);
+
+    res.status(200).json({
+      message: "User Login Successful!",
+      userId: user._id,
+      restaurantName: user.restaurantName,
+      email: user.email,
+      phoneNo: user.phoneNo,
+    });
   } catch (error) {
-    return res
-      .status(400)
-      .json({ userMessage: "User Login Failed!", message: error.message });
+    return res.status(400).json({ message: error.message });
   }
 };
 

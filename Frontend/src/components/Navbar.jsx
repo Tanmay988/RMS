@@ -1,7 +1,9 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
-
+import Logout from "../Pages/Logout";
+import { useAuth } from "../Context/authContext";
 const Navbar = () => {
+  const { authUser } = useAuth();
   return (
     <>
       <div className="container-fluid">
@@ -47,16 +49,26 @@ const Navbar = () => {
                         How it work's
                       </NavLink>
                     </li>
-                    <li className="nav-item mx-2">
-                      <NavLink className="nav-link " to={"/signup"}>
-                        Signup
-                      </NavLink>
-                    </li>
-                    <li className="nav-item mx-2 ">
-                      <Link className="nav-link Btn" to={"/login"}>
-                        Login
-                      </Link>
-                    </li>
+                    {authUser ? (
+                      <>
+                        <li className="nav-item mx-2">
+                          <Logout />
+                        </li>
+                      </>
+                    ) : (
+                      <>
+                        <li className="nav-item mx-2">
+                          <NavLink className="nav-link" to={"/signup"}>
+                            Signup
+                          </NavLink>
+                        </li>
+                        <li className="nav-item mx-2">
+                          <Link className="nav-link Btn" to={"/login"}>
+                            Login
+                          </Link>
+                        </li>
+                      </>
+                    )}
                   </ul>
                 </div>
               </div>

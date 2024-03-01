@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useAuth } from "../Context/authContext";
 
 const useSignup = () => {
-  const navigate = useNavigate();
+  const { setAuthUser } = useAuth();
   const [loading, setLoading] = useState(false);
 
   const signup = async ({
@@ -49,8 +49,8 @@ const useSignup = () => {
       //   console.log(data);
       if (response.ok) {
         localStorage.setItem("Restaurant-user", JSON.stringify(data));
+        setAuthUser(data);
         toast.success("Restaurant created successfully");
-        navigate("/");
       }
     } catch (error) {
       console.log(error);

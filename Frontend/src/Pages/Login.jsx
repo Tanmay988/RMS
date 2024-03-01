@@ -8,15 +8,31 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Link } from "react-router-dom";
+import useLogin from "../Hooks/useLogin";
+import { useNavigate } from "react-router-dom";
+
 const defaultTheme = createTheme();
 
 const Login = () => {
-  const handleSubmit = (event) => {
+  const { LoginPage, loading } = useLogin();
+  const navigate = useNavigate();
+
+  const [login, setLogin] = React.useState({
+    email: "",
+    password: "",
+  });
+
+  const changeHandeler = (e) => {
+    setLogin({ ...login, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
+    await LoginPage(login);
+    // navigate("/");
+    setLogin({
+      email: "",
+      password: "",
     });
   };
 
@@ -60,20 +76,24 @@ const Login = () => {
               sx={{ mt: 1 }}
             >
               <TextField
+                onChange={changeHandeler}
                 margin="normal"
                 required
                 fullWidth
                 id="email"
                 label="Email Address"
                 name="email"
+                value={login.email}
                 autoComplete="email"
                 autoFocus
               />
               <TextField
+                onChange={changeHandeler}
                 margin="normal"
                 required
                 fullWidth
                 name="password"
+                value={login.password}
                 label="Password"
                 type="password"
                 id="password"
@@ -86,7 +106,16 @@ const Login = () => {
                 style={{ backgroundColor: "#ff7549" }}
                 sx={{ mt: 3, mb: 2 }}
               >
-                Log in
+                {loading ? (
+                  <div className="lds-ring">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                ) : (
+                  "Log in"
+                )}
               </Button>
               <Grid container>
                 <Grid item>
