@@ -1,7 +1,7 @@
 // Imports
 const bcrypt = require("bcryptjs");
-const Usermodel = require("../../../models/userModel");
-const getjwtToken = require("../../../utility/get-jwt");
+const Usermodel = require("../../models/userModel")
+const getjwtToken = require("../../utility/get-jwt");
 
 // Register restaurant
 exports.register = async (req, res) => {
