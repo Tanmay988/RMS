@@ -27,8 +27,8 @@ async function generateAndDownloadQRCode(res, urlToEncode, tableNo) {
         const qrImageData = await qrcode.toFile(`qrcode${tableNo}.png`, urlToEncode);
         console.log('QR code generated successfully!');
         // Sending the file as a response
-        res.download(`qrcode${tableNo}.png`);
-        //res.sendFile(`qrcode${tableNo}.png`, { root: '.' });
+        //res.download(`qrcode${tableNo}.png`);
+        res.sendFile(`qrcode${tableNo}.png`, { root: '.' });
     } catch (err) {
         console.error('Error generating QR code:', err);
         // Handle the error appropriately

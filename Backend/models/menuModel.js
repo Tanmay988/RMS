@@ -12,6 +12,9 @@ const menuSchema = new mongoose.Schema({
     itemPrice : {
         type : Number,
         required : true
+    },
+    itemDescription : {
+        type : String
     }
 });
 
