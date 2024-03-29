@@ -1,0 +1,9 @@
+// FILEPATH: /c:/Users/rutur/Desktop/RMS/Backend/.gitignore
+// BEGIN: ed8c6549bwf9
+
+# Add the necessary packages to install
+package-lock.json
+npm-debug.log
+yarn-error.log
+
+// END: ed8c6549bwf9
