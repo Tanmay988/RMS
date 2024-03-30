@@ -44,6 +44,9 @@ exports.updateOrderStatus = async (req, res) => {
     try {
         const { orderId, restaurantId } = req.body;
         const order = await orderModel.findOne({ orderId: orderId, restaurantId: restaurantId });
+        if (!order) {
+            return res.status(404).json({ message: 'Order not found' });
+        }
         order.orderStatus = 'Completed';
         await order.save();
         return res.status(200).json({ message: 'Order status updated successfully' });        
