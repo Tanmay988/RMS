@@ -52,6 +52,11 @@ const Navbar = () => {
                     {authUser ? (
                       <>
                         <li className="nav-item mx-2">
+                          <NavLink className="nav-link" to={"/admin"}>
+                            {authUser.restaurantName}
+                          </NavLink>
+                        </li>
+                        <li className="nav-item mx-2">
                           <Logout />
                         </li>
                       </>

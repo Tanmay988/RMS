@@ -29,7 +29,7 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     await LoginPage(login);
-    // navigate("/");
+    // navigate("/admin");
     setLogin({
       email: "",
       password: "",
