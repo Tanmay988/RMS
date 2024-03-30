@@ -42,6 +42,9 @@ app.use("/api/order",orderRoutes);
 // app.use('/scan' ,qrcodeWebRoutes);
 // app.use('/restaurant' , restaurantWebRoutes);
 
+// Phonepe Routes
+
+
 // Listen app on given port
 app.listen(port, () => {
   console.info(`[STATUS] App listening on port ${port}`);
