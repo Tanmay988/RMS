@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const UserSchema = new mongoose.Schema({
     restaurantName: {
         type: String,
@@ -19,22 +20,6 @@ const UserSchema = new mongoose.Schema({
         required: true,
         unique: true
     }
-    // feedback: [
-    //     {
-    //         type: String
-    //     }
-    // ],
-    // menu: [
-    //     {
-    //         dish: {
-    //             type: String
-    //         },
-    //         price: {
-    //             type: Number
-    //         }
-    //     }
-    // ]
-
 }, {
     timestamps: true // to know when the user was created
 });
