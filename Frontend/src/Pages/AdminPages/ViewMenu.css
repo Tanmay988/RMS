@@ -1,15 +1,15 @@
 .container-menu {
-  width: 80%;
+  width: 40%;
   height: 80dvh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   flex-wrap: wrap;
-  padding: 2rem;
+  padding: auto 1rem;
   margin: 1rem auto;
   border-radius: 10px;
   /* border: 2px solid red; */
-  box-shadow: 10px 10px 10px rgba(0, 0, 1, 0.1);
+  box-shadow: 1px 2px 4px 2px #000;
   border-radius: 1rem;
   overflow: scroll;
   scroll-behavior: smooth;
@@ -21,7 +21,7 @@
   color: var(--primary-color);
   padding: 0.6rem 0;
   margin: 1rem 0;
-  text-align: start;
+  text-align: center;
   border-bottom: 1px solid #000;
 }
 .menu-group {

@@ -14,11 +14,6 @@ import Logout from "./Pages/Logout";
 import { useAuth } from "./Context/authContext";
 import { useNavigate } from "react-router-dom";
 
-//phonepe routes
-import Phonepe from "./Pages/Phonepe";
-import Success from "./components/Success";
-import Failure from "./components/Failure";
-
 //admin routes
 import Admin from "./Pages/Admin";
 import ViewMenu from "./Pages/AdminPages/ViewMenu";
@@ -27,6 +22,8 @@ import UpdateMenu from "./Pages/AdminPages/UpdateMenu";
 import GenerateQR from "./Pages/AdminPages/GenerateQR";
 import Tables from "./Pages/AdminPages/Tables";
 import Feedbacks from "./Pages/AdminPages/Feedbacks";
+import UpdateMenuForm from "./Pages/AdminPages/UpdateMenuForm";
+import AddMenuButton from "./Pages/AdminPages/AddMenuButton";
 
 const App = () => {
   const { authUser } = useAuth();
@@ -51,10 +48,16 @@ const App = () => {
         <Route path="/admin" element={authUser && <Admin />} />
         <Route path="/admin/viewmenu" element={authUser && <ViewMenu />} />
         <Route
+          path="/admin/add/:restaurantId"
+          element={authUser && <AddMenuButton />}
+        />
+        <Route
           path="/admin/previousorders"
           element={authUser && <PreviousOrders />}
         />
         <Route path="/admin/updatemenu" element={authUser && <UpdateMenu />} />
+        <Route path="/admin/editmenu/:id/:name" element={<UpdateMenuForm />} />
+
         <Route path="/admin/qr" element={authUser && <GenerateQR />} />
         <Route path="/admin/tables" element={authUser && <Tables />} />
         <Route path="/admin/feedbacks" element={authUser && <Feedbacks />} />

@@ -34,7 +34,7 @@ connectWithDB();
 app.use("/api/auth", userAuthroutes);
 app.use("/api/qr", qrRoutes);
 app.use("/api/menu", menuRoutes);
-app.use("/api/order",orderRoutes);
+app.use("/api/order", orderRoutes);
 
 // app.use("/viewmenu",indexWebroutes);
 // app.use('/payment', paymentWebRoutes);
@@ -43,7 +43,6 @@ app.use("/api/order",orderRoutes);
 // app.use('/restaurant' , restaurantWebRoutes);
 
 // Phonepe Routes
-
 
 // Listen app on given port
 app.listen(port, () => {
