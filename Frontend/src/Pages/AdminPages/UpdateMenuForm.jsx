@@ -7,10 +7,10 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import toast from "react-hot-toast";
 const defaultTheme = createTheme();
 
 const UpdateMenuForm = () => {
-  const navigate = useNavigate();
   const param = useParams();
   const { id: restaurantId, name: itemName } = param;
   const [itemDescription, setItemDescription] = useState("");
@@ -35,6 +35,7 @@ const UpdateMenuForm = () => {
         }
       } catch (error) {
         console.error("Error fetching item details:", error);
+        toast.error("Error fetching item details");
       }
     };
 
@@ -60,11 +61,13 @@ const UpdateMenuForm = () => {
       });
       const data = await resp.json();
       if (resp.ok) {
-        console.log("Item updated successfully:", data);
-        navigate("/admin/updatemenu");
-      } 
+        // console.log("Item updated successfully:", data);
+        toast.success("Item updated successfully");
+        window.history.back();
+      }
     } catch (error) {
       console.error("Error updating item:", error);
+      toast.error("Error in updating item");
     }
   };
 

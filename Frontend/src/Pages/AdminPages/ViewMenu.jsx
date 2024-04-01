@@ -13,6 +13,7 @@ const ViewMenu = () => {
 
       if (resp.ok) {
         setMenu(data.message);
+        localStorage.setItem("menu", JSON.stringify(data.message[0]));
       }
     } catch (error) {
       console.error("Error fetching menu items:", error);
@@ -26,22 +27,36 @@ const ViewMenu = () => {
     <>
       <main className="container-menu">
         <div className="menu">
-          <h2 className="menu-group-heading">Main Course</h2>
-          <div className="menu-group">
-            {menu.map((item, idx) => {
-              return (
-                <div key={idx} className="menu-item">
-                  <div className="menu-item-heading">
-                    <h3 className="menu-item-name">{item.itemName}</h3>
-                    <div className="menu-item-desc">{item.itemDescription}</div>
+          {Object.entries(
+            menu.reduce((acc, item) => {
+              if (!acc[item.itemCategory]) {
+                acc[item.itemCategory] = [];
+              }
+              acc[item.itemCategory].push(item);
+              return acc;
+            }, {})
+          ).map(([category, items], idx) => (
+            <div key={idx}>
+              {/* Render category heading */}
+              <h2 className="menu-group-heading">{category}</h2>
+              <div className="menu-group">
+                {/* Render items within the category */}
+                {items.map((item, index) => (
+                  <div key={index} className="menu-item">
+                    <div className="menu-item-heading">
+                      <h3 className="menu-item-name">{item.itemName}</h3>
+                      <div className="menu-item-desc">
+                        {item.itemDescription}
+                      </div>
+                    </div>
+                    <div className="menu-prices">
+                      <h3 className="menu-item-price">₹{item.itemPrice}</h3>
+                    </div>
                   </div>
-                  <div className="menu-prices">
-                    <h3 className="menu-item-price">₹{item.itemPrice}</h3>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </main>
     </>

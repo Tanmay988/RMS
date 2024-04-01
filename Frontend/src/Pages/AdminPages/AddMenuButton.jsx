@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import toast from "react-hot-toast";
 const defaultTheme = createTheme();
 
 const AddMenuButton = () => {
@@ -36,10 +37,13 @@ const AddMenuButton = () => {
 
       const data = await resp.json();
       if (resp.ok) {
-        console.log("added menu items", data);
+        // console.log("added menu items", data);
+        toast.success("Item added successfully");
+        window.history.back();
       }
     } catch (error) {
       console.error("Error adding menu items:", error);
+      toast.error("Error in adding menu items");
     }
   };
 
@@ -83,16 +87,6 @@ const AddMenuButton = () => {
                 noValidate
                 sx={{ mt: 1 }}
               >
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="restaurantId"
-                  value={restaurantId}
-                  //   onChange={(e) => setItemName(e.target.value)}
-                  label="Restaurant Id"
-                  autoFocus
-                />
                 <TextField
                   margin="normal"
                   required
@@ -142,7 +136,7 @@ const AddMenuButton = () => {
                   style={{ backgroundColor: "#ff7549" }}
                   sx={{ mt: 3, mb: 2 }}
                 >
-                  Update Menu
+                  Add Item
                 </Button>
               </Box>
             </Box>

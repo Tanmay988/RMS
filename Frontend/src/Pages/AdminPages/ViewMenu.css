@@ -1,58 +1,126 @@
+/* .container-menu {
+  width: 90%;
+  max-width: 800px;
+  height: 80vh;
+  margin: 0 auto;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: auto;
+}
+
+.menu-group-heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  padding: 0.6rem 0;
+  margin: 1rem 0;
+  text-align: start;
+  border-bottom: 1px solid #ccc;
+}
+
+.menu-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.menu-item-heading {
+  flex: 1;
+}
+
+.menu-item-name {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.menu-item-desc {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #6c757d;
+}
+
+.menu-prices {
+  display: flex;
+  align-items: center;
+}
+
+.menu-item-price {
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: #333;
+  margin-right: 10px;
+} */
+
 .container-menu {
-  width: 40%;
-  height: 80dvh;
+  width: 60%;
+  height: 80vh;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
+  align-items: center;
   flex-wrap: wrap;
-  padding: auto 1rem;
+  padding: 1rem;
   margin: 1rem auto;
   border-radius: 10px;
-  /* border: 2px solid red; */
-  box-shadow: 1px 2px 4px 2px #000;
-  border-radius: 1rem;
-  overflow: scroll;
-  scroll-behavior: smooth;
-  scrollbar-width: thin;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: auto;
 }
+
 .menu-group-heading {
   font-size: 1.8rem;
   font-weight: 600;
   color: var(--primary-color);
   padding: 0.6rem 0;
   margin: 1rem 0;
-  text-align: center;
-  border-bottom: 1px solid #000;
+  text-align: start;
+  border-bottom: 2px solid #333;
 }
+
 .menu-group {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
+
 .menu-item {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 .menu-item-heading {
   display: flex;
   flex-direction: column;
-  h3 {
-    font-weight: 400;
-    font-size: 21px;
-  }
 }
+
 .menu-item-desc {
   font-size: 1rem;
   font-weight: 400;
   color: #6c757d;
 }
+
 .menu-prices {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  h3 {
-    font-weight: 300;
-    font-size: 1.4rem;
-  }
+}
+
+.menu-item-price {
+  font-weight: 300;
+  font-size: 1.4rem;
+  color: #333;
 }

@@ -30,3 +30,27 @@
 .edit:hover {
   color: rgb(18, 183, 18);
 }
+
+.category-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px; /* Adjust spacing between categories */
+}
+
+.Btn-add {
+  /* Add your button styling */
+  /* Example styles */
+  padding: 4px 8px;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.Btn-add:hover {
+  background-color: white;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
