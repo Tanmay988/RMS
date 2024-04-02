@@ -1,0 +1,38 @@
+.table-box {
+  display: flex;
+  width: 600px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 50px;
+  overflow: auto;
+}
+.card-table {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.3s;
+}
+
+.card-table:hover {
+  transform: translateY(-5px);
+}
+
+.card-header {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.order-list {
+  margin-bottom: 10px;
+}
+
+.total-price {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.status-checkbox {
+  margin-top: 10px;
+}

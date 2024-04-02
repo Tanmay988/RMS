@@ -30,25 +30,6 @@ const Navbar = () => {
                   id="navbarSupportedContent"
                 >
                   <ul className="navbar-nav ms-md-auto mb-2 mb-lg-0">
-                    <li className="nav-item mx-4">
-                      <NavLink
-                        className="nav-link "
-                        aria-current="page"
-                        to={"/"}
-                      >
-                        Home
-                      </NavLink>
-                    </li>
-                    <li className="nav-item mx-4">
-                      <NavLink className="nav-link " to={"/features"}>
-                        Features
-                      </NavLink>
-                    </li>
-                    <li className="nav-item mx-4">
-                      <NavLink className="nav-link " to={"/info"}>
-                        How it work's
-                      </NavLink>
-                    </li>
                     {authUser ? (
                       <>
                         <li className="nav-item mx-2">
@@ -62,6 +43,26 @@ const Navbar = () => {
                       </>
                     ) : (
                       <>
+                        <li className="nav-item mx-4">
+                          <NavLink
+                            className="nav-link "
+                            aria-current="page"
+                            to={"/"}
+                          >
+                            Home
+                          </NavLink>
+                        </li>
+                        <li className="nav-item mx-4">
+                          <NavLink className="nav-link " to={"/features"}>
+                            Features
+                          </NavLink>
+                        </li>
+                        <li className="nav-item mx-4">
+                          <NavLink className="nav-link " to={"/info"}>
+                            How it work's
+                          </NavLink>
+                        </li>
+
                         <li className="nav-item mx-2">
                           <NavLink className="nav-link" to={"/signup"}>
                             Signup
