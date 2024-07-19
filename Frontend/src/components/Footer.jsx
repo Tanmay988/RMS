@@ -10,9 +10,9 @@ const Footer = () => {
         <p>
           Developed By -
           <a href={URL} target="_blank">
-            Tanmay Pampatwar 
+            Tanmay Pampatwar
           </a>
-          |<a href="#"> Ruturaj Jadhav</a>
+          |<a href="#"> Vaibhav Patil</a>
         </p>
       </div>
     </>

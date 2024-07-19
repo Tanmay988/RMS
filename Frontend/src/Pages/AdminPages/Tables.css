@@ -1,17 +1,18 @@
 .table-box {
   display: flex;
-  width: 600px;
+  width: 1050px;
   flex-wrap: wrap;
+  margin: 40px auto;
   justify-content: center;
-  margin-top: 50px;
   overflow: auto;
 }
 .card-table {
+  width: 200px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  margin-bottom: 20px;
+  margin: 20px;
   transition: transform 0.3s;
 }
 
@@ -28,11 +29,53 @@
   margin-bottom: 10px;
 }
 
-.total-price {
-  font-weight: bold;
-  margin-top: 10px;
+.order-details {
+  font-weight: 600;
+  font-size: 24px;
+  color: #ff7549;
+  text-align: center;
 }
 
-.status-checkbox {
-  margin-top: 10px;
+.order-item {
+  display: flex;
+  flex-direction: column;
+  margin: 2px 0;
+}
+
+.order-item-heading h2 {
+  font-size: 18px;
+  font-weight: 600;
+}
+.items {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 10px;
+}
+.order-status {
+  color: green;
+}
+.items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.item-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-name {
+  margin-right: 10px;
+}
+
+.order-status {
+  color: green;
 }

@@ -9,14 +9,12 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Link } from "react-router-dom";
 import useLogin from "../Hooks/useLogin";
-import { useNavigate } from "react-router-dom";
 
 const defaultTheme = createTheme();
 
 const Login = () => {
   const { LoginPage, loading } = useLogin();
-  const navigate = useNavigate();
-
+ 
   const [login, setLogin] = React.useState({
     email: "",
     password: "",
@@ -29,7 +27,6 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     await LoginPage(login);
-    // navigate("/admin");
     setLogin({
       email: "",
       password: "",

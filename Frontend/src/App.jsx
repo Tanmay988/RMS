@@ -31,7 +31,7 @@ const App = () => {
 
   useEffect(() => {
     if (authUser) {
-      navigate("/");
+      navigate("/admin");
     }
   }, [authUser]);
   return (
